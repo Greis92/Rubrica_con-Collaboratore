@@ -1,5 +1,6 @@
-package Rubrica;
+package rubrica;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -45,40 +46,40 @@ public class Rubrica {
 		return v;
 	}
 	
-	public Voce getVoce(String nome,String cognome)throws VoceNonEsiste{
-		Voce v=null;
-		 
-		if(voci.containsKey(nome+" "+cognome)){
-			return v=voci.get(getVoci());
-			
-		}
-		
-		throw new VoceNonEsiste("Voce non esistente in rubrica");
-		
-		
-	}
-	
-	public List<Voce> getTuttiVoci(){
+	public Voce getVoce(){
 		return null;
 	}
 	
-	public Voce aggiornaVoce(String nome,String cognome,String telefono)throws VoceNonEsiste{
+	public List<Voce> getTuttiVoci() throws VoceGiaEsiste{
 		
-		Voce v=null;
+		List<Voce> vTemp = null;
+		
+		if(voci == null){
+			throw new VoceGiaEsiste("Rubrica vuota!");
+		}
+		
+		vTemp = new ArrayList<Voce>(voci.values());
+		
+		return vTemp;
+	}
+	
+	public Voce aggiornaVoce(String nome,String cognome,String telefono){
+		return null;
+	}
+	
+	public Voce cancellaVoce(String nome,String cognome)throws VoceGiaEsiste{
+		
+		Voce v = null;
 		
 		if(!voci.containsKey(nome+" "+cognome)){
-			throw new VoceNonEsiste("L'utente non esiste");
-			
+			throw new VoceGiaEsiste("Voce non presente!");	
 		}
-		voci.get(nome+" "+cognome).setTelefono(telefono);
+		
 		v = voci.get(nome+" "+cognome);
 		
+		voci.remove(nome+" "+cognome);
 		
 		return v;
-	}
-	
-	public Voce cancellaVoce(String nome,String cognome){
-		return null;
 	}
 
 	
