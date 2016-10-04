@@ -1,4 +1,4 @@
-package Rubrica;
+package rubrica;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package Rubrica;
+package rubrica;
 
 public class VoceNonEsiste extends Exception {
 
