@@ -7,8 +7,12 @@ import java.util.TreeMap;
 
 public class Rubrica {
 	
+	// ATTRIBUTI
+	
 	private String nome;
 	private Map<String,Voce> voci = new TreeMap<String,Voce>();
+	
+	// COSTRUTTORE
 	
 	public Rubrica() {
 	}
@@ -46,16 +50,25 @@ public class Rubrica {
 		return v;
 	}
 	
-	public Voce getVoce(){
-		return null;
+	public Voce getVoce(String nome,String cognome,String telefono)throws VoceGiaEsiste{
+		
+		Voce v = null;
+		
+		if(voci.containsKey(nome+" "+cognome)){
+			throw new VoceGiaEsiste("Voce esistente in Rubrica!");
+		}
+		v = new Voce(nome,cognome,telefono);
+		voci.put(nome+" "+cognome,v);
+		
+		return v;
 	}
 	
-	public List<Voce> getTuttiVoci() throws VoceGiaEsiste{
+	public List<Voce> getTuttiVoci() throws VoceNonEsiste{
 		
 		List<Voce> vTemp = null;
 		
 		if(voci == null){
-			throw new VoceGiaEsiste("Rubrica vuota!");
+			throw new VoceNonEsiste("Rubrica vuota!");
 		}
 		
 		vTemp = new ArrayList<Voce>(voci.values());
@@ -63,16 +76,24 @@ public class Rubrica {
 		return vTemp;
 	}
 	
-	public Voce aggiornaVoce(String nome,String cognome,String telefono){
-		return null;
+		public Voce aggiornaVoce(String nome,String cognome,String telefono)throws VoceNonEsiste{
+		
+		Voce v=null;
+		if(!voci.containsKey(nome+" "+cognome)){
+			throw new VoceNonEsiste("Voce non presente");
+		}
+		voci.get(nome+" "+cognome).setTelefono(telefono);
+		v=new Voce(nome,cognome,telefono);
+		
+		return v;
 	}
 	
-	public Voce cancellaVoce(String nome,String cognome)throws VoceGiaEsiste{
+	public Voce cancellaVoce(String nome,String cognome)throws VoceNonEsiste{
 		
 		Voce v = null;
 		
 		if(!voci.containsKey(nome+" "+cognome)){
-			throw new VoceGiaEsiste("Voce non presente!");	
+			throw new VoceNonEsiste("Voce non presente!");	
 		}
 		
 		v = voci.get(nome+" "+cognome);
