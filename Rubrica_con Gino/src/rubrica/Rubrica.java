@@ -101,7 +101,8 @@ public class Rubrica {
 		}
 		
 		voci.get(nome+" "+cognome).setTelefono(telefono);
-		v=new Voce(nome,cognome,telefono);
+		
+		v=voci.get(nome+" "+cognome);
 		
 		return v;
 	}

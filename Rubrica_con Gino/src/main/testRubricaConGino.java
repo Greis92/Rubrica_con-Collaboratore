@@ -25,16 +25,46 @@ public class testRubricaConGino {
 			System.out.println("Voce già presente!");
 		}
 		
-		System.out.println(r.toStringVoci());
+		//System.out.println(r.toStringVoci());
 		
 		try{
-			r.getVoce("Andrea","Gino", "3342565456");
-			r.getVoce("Grazia", "Digilio", "3376545432");
-			r.getVoce("Vahid", "Digilio", "3376545432");
+			System.out.println(r.getVoce("Andrea","Gino", "3342565456").toStringVoce());
+//			r.getVoce("Grazia", "Digilio", "3376545432");
+//			r.getVoce("Vahid", "Digilio", "3376545432");
 		
 		}catch(VoceNonEsiste e){
 			System.out.println("Voce non presente!");
 		}
+		
+		try{
+			r.getTuttiVoci();
+		} catch (VoceNonEsiste e){
+			System.out.println("Rubrica vuota ");
+		}
+		
+		System.out.println(r.toStringVoci());
+		
+		try{
+			System.out.println(r.aggiornaVoce("Grazia","Digilio" ,"123").toStringVoce());
+		}catch (VoceNonEsiste e){
+			System.out.println("Voce non esiste");
+		}
+		
+		
+		try{
+			System.out.println(r.cancellaVoce("Andrea", "Gino").toStringVoce());
+			
+		} catch(VoceNonEsiste e){
+			System.out.println("Voce non esiste");
+		}
+		
+		
+			
+		
+			
+		}
+		
+		
 	}
 
-}
+
