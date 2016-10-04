@@ -48,19 +48,6 @@ public class Rubrica {
 		return v;
 	}
 	
-	public Voce getVoce(String nome,String cognome,String telefono)throws VoceGiaEsiste{
-		
-		Voce v = null;
-		
-		if(voci.containsKey(nome+" "+cognome)){
-			throw new VoceGiaEsiste("Voce esistente in Rubrica!");
-		}
-		v = new Voce(nome,cognome,telefono);
-		voci.put(nome+" "+cognome,v);
-		
-		return v;
-	}
-	
 	public List<Voce> getTuttiVoci() throws VoceNonEsiste{
 		
 		List<Voce> vTemp = null;
