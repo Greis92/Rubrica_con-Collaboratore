@@ -10,5 +10,4 @@ public class VoceNonEsiste extends Exception {
 	public VoceNonEsiste(String s){
 		super(s);
 	}
-
 }
