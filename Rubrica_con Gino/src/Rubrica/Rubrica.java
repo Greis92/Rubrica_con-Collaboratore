@@ -45,15 +45,34 @@ public class Rubrica {
 		return v;
 	}
 	
-	public Voce getVoce(){
-		return null;
+	public Voce getVoce(String nome,String cognome)throws VoceNonEsiste{
+		Voce v=null;
+		 
+		if(voci.containsKey(nome+" "+cognome)){
+			return v=voci.get(getVoci());
+			
+		}
+		
+		throw new VoceNonEsiste("Voce non esistente in rubrica");
+		
+		
 	}
 	
 	public List<Voce> getTuttiVoci(){
 		return null;
 	}
 	
-	public Voce aggiornaVoce(String nome,String cognome,String telefono){
+	public Voce aggiornaVoce(String nome,String cognome,String telefono)throws VoceNonEsiste{
+		
+		Voce v=null;
+		
+		if(voci.containsKey(nome+" "+cognome)){
+			v=new Voce(nome,cognome,telefono);
+			voci.put(nome+" "+cognome, voci.get(telefono).setTelefono(telefono));
+			
+		}
+		 throw new VoceNonEsiste("L'utente non esiste");
+		
 		return null;
 	}
 	
