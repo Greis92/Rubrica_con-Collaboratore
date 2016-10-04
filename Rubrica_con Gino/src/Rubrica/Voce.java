@@ -1,4 +1,4 @@
-package rubrica;
+package Rubrica;
 
 public class Voce {
 	
