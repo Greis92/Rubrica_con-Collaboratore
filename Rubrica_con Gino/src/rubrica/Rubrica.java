@@ -123,6 +123,15 @@ public class Rubrica {
 		
 		return v;
 	}
+	
+	// METODO TO STRING VOCI
+	public String toStringVoci(){
+		String str = "";
+		for(Map.Entry<String, Voce> entry: voci.entrySet()){
+			str += entry.getValue().toStringVoce();
+		}
+		return str;
+	}
 
 	
 	

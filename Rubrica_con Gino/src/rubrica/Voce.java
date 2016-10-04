@@ -43,6 +43,12 @@ public class Voce {
 		this.telefono = telefono;
 	}
 	
+	// METODO TO STRING
+	public String toStringVoce(){
+		String str = "";
+		str += nome + " " + cognome + " " + telefono + "\n";
+		return str;
+	}
 	
 
 }
