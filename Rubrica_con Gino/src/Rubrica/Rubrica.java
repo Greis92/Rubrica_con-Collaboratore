@@ -66,14 +66,15 @@ public class Rubrica {
 		
 		Voce v=null;
 		
-		if(voci.containsKey(nome+" "+cognome)){
-			v=new Voce(nome,cognome,telefono);
-			voci.put(nome+" "+cognome, voci.get(telefono).setTelefono(telefono));
+		if(!voci.containsKey(nome+" "+cognome)){
+			throw new VoceNonEsiste("L'utente non esiste");
 			
 		}
-		 throw new VoceNonEsiste("L'utente non esiste");
+		voci.get(nome+" "+cognome).setTelefono(telefono);
+		v = voci.get(nome+" "+cognome);
 		
-		return null;
+		
+		return v;
 	}
 	
 	public Voce cancellaVoce(String nome,String cognome){
