@@ -2,6 +2,7 @@ package main;
 
 import rubrica.Rubrica;
 import rubrica.VoceGiaEsiste;
+import rubrica.VoceNonEsiste;
 
 public class testRubricaConGino {
 
@@ -25,6 +26,15 @@ public class testRubricaConGino {
 		}
 		
 		System.out.println(r.toStringVoci());
+		
+		try{
+			r.getVoce("Andrea","Gino", "3342565456");
+			r.getVoce("Grazia", "Digilio", "3376545432");
+			r.getVoce("Vahid", "Digilio", "3376545432");
+		
+		}catch(VoceNonEsiste e){
+			System.out.println("Voce non presente!");
+		}
 	}
 
 }
