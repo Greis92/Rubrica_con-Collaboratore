@@ -33,7 +33,7 @@ public class Rubrica {
 		this.voci = voci;
 	}
 
-	public Voce aggiungiVoce(String nome,String cognome,String telefono)throws VoceGiaEsiste{
+	public Voce getVoce(String nome,String cognome,String telefono)throws VoceGiaEsiste{
 		
 		Voce v = null;
 		
@@ -44,10 +44,6 @@ public class Rubrica {
 		voci.put(nome+" "+cognome,v);
 		
 		return v;
-	}
-	
-	public Voce getVoce(){
-		return null;
 	}
 	
 	public List<Voce> getTuttiVoci() throws VoceGiaEsiste{
@@ -63,8 +59,16 @@ public class Rubrica {
 		return vTemp;
 	}
 	
-	public Voce aggiornaVoce(String nome,String cognome,String telefono){
-		return null;
+	public Voce aggiornaVoce(String nome,String cognome,String telefono)throws VoceNonEsiste{
+		
+		Voce v=null;
+		if(!voci.containsKey(nome+" "+cognome)){
+			throw new VoceNonEsiste("Voce non presente");
+		}
+		voci.get(nome+" "+cognome).setTelefono(telefono);
+		v=new Voce(nome,cognome,telefono);
+		
+		return v;
 	}
 	
 	public Voce cancellaVoce(String nome,String cognome)throws VoceGiaEsiste{
