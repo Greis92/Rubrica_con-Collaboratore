@@ -90,7 +90,7 @@ public class Rubrica {
 	
 	/*METODO CHE CONTROLLA SE ESISTE LA VOCE PASSATA COME PARAMETRO
 	 * SE NON ESISTE LANCIA ECCEZIONE
-	 * ALTRIMENTI AGGIORNA LA VOCE CON I NUOVI DATI	E LA RITORNA
+	 * ALTRIMENTI SETTA IL CAMPO TELEFONO E RITORNA LA VOCE
 	 */
 	public Voce aggiornaVoce(String nome,String cognome,String telefono)throws VoceNonEsiste{
 		
